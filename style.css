@@ -13,10 +13,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(11, 249, 51);
+  background-image: url("./images/matrix-code.jpg");
+  background-size: cover;
+  background-blend-mode: multiply;
 }
 
 button {
-  -webkit-appearance: none;
   border-radius: 0;
   text-align: inherit;
   background: none;
@@ -37,11 +40,12 @@ button {
   color: white;
   gap: 35px;
   width: 550px;
+  padding: 7.7rem 0;
 }
 
 .context {
   border-bottom: 1px solid grey;
-  /* background-color: red; */
+  width: 446px;
 }
 
 .context__title {
@@ -55,6 +59,7 @@ button {
 
 .context__subtitle {
   font-size: 20px;
+  margin-top: 0.625rem;
 }
 
 .context__generate-btn {
@@ -62,17 +67,30 @@ button {
   color: white;
   padding: 0.5rem;
   border-radius: 0.3rem;
+  margin: 3rem 0 1.5rem 0;
 }
 
 .passwords {
-  display: block;
-  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  width: 446px;
+  text-align: center;
 }
 
-.password-1 {
-  background-color: #10b981;
+.password1,
+.password2 {
+  color: #55f991;
+  background-color: #273549;
+  width: 211px;
+  height: 39px;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
 }
 
-.password-2 {
-  background-color: #10b981;
+.filtering {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
 }
