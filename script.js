@@ -6,6 +6,9 @@ const includeUppercaseInput = document.querySelector("#include-uppercase");
 const includeLowercaseInput = document.querySelector("#include-lowercase");
 const includeNumbersInput = document.querySelector("#include-numbers");
 const includeSymbolsInput = document.querySelector("#include-symbols");
+const copyBtn1El = document.querySelector(".copy-btn1");
+const copyBtn2El = document.querySelector(".copy-btn2");
+const copiedAlertEl = document.querySelector("#copied-alert");
 
 const characters = [
   "A",
@@ -120,6 +123,7 @@ function getFilteredCharacters() {
       )
     );
   }
+
   // If no filters are omitted, use all characters
   if (filteredChars.length === 0) {
     filteredChars = characters;
@@ -130,7 +134,7 @@ function getFilteredCharacters() {
 // Function to generate a random character from the filtered character array
 function generateRandomChar(charArray) {
   let randomIndex = Math.floor(Math.random() * charArray.length);
-  return characters[randomIndex];
+  return charArray[randomIndex];
 }
 
 // Function to generate a password based on the selected length and character filters
@@ -150,4 +154,31 @@ function handleClick() {
   password2El.textContent = generatePassword();
 }
 
+function showCopiedAlert() {
+  copiedAlertEl.classList.add("show");
+
+  setTimeout(() => {
+    copiedAlertEl.classList.remove("show");
+  }, 2000);
+}
+
+function handleCopy(textToCopy) {
+  if (textToCopy.textContent === "") {
+    alert("No password to copy!");
+    return;
+  }
+  navigator.clipboard
+    .writeText(textToCopy.textContent)
+    .then(() => {
+      showCopiedAlert();
+      console.log("Password copied: ", textToCopy.textContent);
+    })
+    .catch((err) => {
+      console.error("Failed to copy: ", err);
+      alert("Failed to copy password. Please try again.");
+    });
+}
+
 generateBtnEl.addEventListener("click", handleClick);
+copyBtn1El.addEventListener("click", () => handleCopy(password1El));
+copyBtn2El.addEventListener("click", () => handleCopy(password2El));
